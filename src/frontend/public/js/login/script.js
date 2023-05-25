@@ -76,8 +76,15 @@ function validateInput(input, index) {
     }
 }
 
+
+async function create_account(name, email, password) {
+    const reponse = fetch()
+}
+
 inputsCriarConta.forEach((input, index) => 
-input.addEventListener('change', (event) => validateInput(event.target, index))
+    input.addEventListener('change', (event) =>
+        validateInput(event.target, index)
+    )
 )
 
 function submitForm(event) {
@@ -90,9 +97,12 @@ function submitForm(event) {
         return element.parentElement.classList.contains('invalido')
     }
 
+    console.log(arrayInputs)
     if (arrayInputs.some(isInvalid) || !termosInput.checked) {
         event.preventDefault()
+        console.log("invalid")
     }
+    console.log("valid")
 }
 
 submitBtn.addEventListener('click', submitForm)
@@ -100,8 +110,11 @@ submitBtn.addEventListener('click', submitForm)
 
 // lightmode e darkmode 
 
+
+/*
 function changeMode() {
     document.body.classList.toggle('darkmode');
 }
 
 btnDarkmode.addEventListener('click', changeMode)
+*/

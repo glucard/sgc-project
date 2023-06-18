@@ -1,0 +1,36 @@
+{{> header}}
+    <!-- CONTENT -->
+    <main>
+ <div class="content">
+  <h1>Lista de Cursos</h1>
+  <div id="cursos" class="container-cursos">
+    {{#each cursos}}
+        {{#dataValues}}
+          <div class="card">
+            <div class="card-image">
+                <img
+                    src="/images/cards/{{image}}"
+                    width="100%"
+                    alt="img curso"
+                />
+            </div>
+            <div class="card-content">
+                <h2 class="card-title">{{name}}</h2>
+                <p>
+                {{description}}
+                </p>
+            </div>
+            <div class="card-footer">
+                <p class="tag">{{tags}}</p>
+                <a href="/cursos/page/{{id}}"
+                    ><button type="button" class="action">Inscrever-se</button></a
+                >
+          </div>
+        </div>
+        {{/dataValues}}
+    {{/each}}
+  </div>
+</div>
+    </main>
+ {{> footer}}
+

@@ -1,0 +1,105 @@
+  {{> header}}
+  <!-- CONTENT -->
+  <h1>Formulário de login & cadastro</h1>
+  <section class="login">
+    <div class="btns-login">
+      <button class="btn-entrar ativo" type="button">Entrar</button>
+      <button class="btn-cadastro" type="button">Criar conta</button>
+    </div>
+    <div class="container">
+      <form action="#" class="form-entrar ativo" method="post" id="entrar">
+        <div class="username-field ct-input">
+          <label for="usuario-entrar">Usuário ou email</label>
+          <input
+            type="text"
+            name="usuario-entrar"
+            id="usuario-entrar"
+            placeholder="user123"
+          />
+        </div>
+
+        <div class="senha-field ct-input">
+          <label for="senha-entrar">Senha</label>
+          <input
+            type="password"
+            name="senha-entrar"
+            id="senha-entrar"
+            placeholder="********"
+          />
+        </div>
+
+        <label for="lembrar" class="lembrar-label">
+          <input type="checkbox" name="lembrar" id="lembrar" />
+          Lembrar-me
+        </label>
+
+        <button type="submit" class="submit">Entrar</button>
+
+        <a href="/" class="forgot">Esqueci meu nome de usuário ou senha</a>
+      </form>
+
+      <form action="#" class="form-criar-conta" id="criar" method="post">
+        <div class="username-field ct-input">
+          <label for="usuario">Usuário</label>
+          <input
+            type="text"
+            name="usuario"
+            id="usuario"
+            placeholder="user123"
+          />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-times-circle"></i>
+          <span class="alert">O nome de usuário deve conter apenas números,
+            letras (maiúsculas ou minúsculas) ou _ e deve possuir, ao menos, 5
+            caracteres.</span>
+        </div>
+        <div class="email-field ct-input">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="seuemail@email.com"
+          />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-times-circle"></i>
+          <span class="alert">O valor digitado não corresponde a um email.</span>
+        </div>
+        <div class="password-field ct-input">
+          <label for="senha">Senha</label>
+          <input
+            type="password"
+            name="senha"
+            id="senha"
+            placeholder="********"
+          />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-times-circle"></i>
+          <span class="alert">A senha deve possuir no mínimo 8 caracteres, 1
+            letra maiúscula, 1 letra minúscula e 1 caractere especial.</span>
+        </div>
+        <div class="password-repeat-field ct-input">
+          <label for="senharpt">Repita sua senha</label>
+          <input
+            type="password"
+            name="senharpt"
+            id="senharpt"
+            placeholder="********"
+          />
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-times-circle"></i>
+          <span class="alert">As senhas não correspondem</span>
+        </div>
+        <div class="termos-field">
+          <input type="checkbox" name="termos" id="termos" />
+          <label for="termos">Li e concordo com os
+            <a href="/">Termos e Condições</a></label>
+        </div>
+
+        <button type="submit" class="submit" id="submit-conta">
+          Criar conta
+        </button>
+      </form>
+    </div>
+  </section>
+  {{> footer}}

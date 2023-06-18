@@ -5,9 +5,7 @@ import sequelize from "./config/sequelize.js";
 import cors from "cors";
 import path from "path";
 import fileDirName from './config/file-dir-name.js';
-
-import bodyParser from 'body-parser'
-import expressHbs from 'express-handlebars'
+import { engine } from 'express-handlebars'
 
 const { __dirname, __filename } = fileDirName(import.meta);
 
@@ -17,13 +15,19 @@ const PORT = 3000;
 
 global.__basedir = __dirname;
 // Definindo static folder
-app.use(bodyParser.urlencoded({extended: false}));
-app.use("/public", express.static(path.join(__dirname, "/frontend/public")));
+app.use("/", express.static(path.join(__dirname, "/public")));
 
 
-app.engine('hbs', expressHbs());
-app.set('view engine', 'hbs');
-app.set('views', 'views');
+// Setup Template Engine
+app.engine("hbs", engine({
+  extname: ".hbs",
+  defaultLayout: "main",
+  partialsDir: path.join(__dirname, "views/partials"),
+  layoutsDir: path.join(__dirname, "views/layouts"),
+}))
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
+
 
 // MIDDLEWARE
 app.use(cors());

@@ -34,9 +34,8 @@ router.post("/login", async (req, res) => {
   res.status(200).json(resp);
 });
 
-
 router.get("/login", async (req, res) => {
-  
-  res.render(__basedir + "/frontend/src/login.html");
-})
+  res.render("login.hbs");
+});
+
 export default router;

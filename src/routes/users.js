@@ -19,7 +19,8 @@ router.post("/create", async (req, res) => {
     return res.status(400).json(resp);
   }
 
-  res.status(200).json(resp);
+
+  // res.status(200).json(resp);
 });
 
 router.post("/login", async (req, res) => {
@@ -29,7 +30,13 @@ router.post("/login", async (req, res) => {
   if (resp.error) {
     return res.status(400).json(resp);
   }
+  
   res.status(200).json(resp);
 });
 
+
+router.get("/login", async (req, res) => {
+  
+  res.render(__basedir + "/frontend/src/login.html");
+})
 export default router;

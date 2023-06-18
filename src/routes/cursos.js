@@ -27,7 +27,7 @@ router.delete("/:curso_id", AuthMiddleware, async (req, res) => {
 
 router.get("/", AuthMiddleware, async (req, res) => {
   const cursos = await cursoController.getAll();
-  res.json(cursos);
+  res.render(__basedir + "/frontend/src/pagina-curso.html");
 });
 
 

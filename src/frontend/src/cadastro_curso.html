@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Formulários de login e tela de cadastro de usuário com validação" />
+  <meta name="keywords" content="validaçao, regex, usuario, login, cadastro" />
+  <meta name="author" content="Acauan Ribeiro" />
+  <meta name="theme-color" content="#1C3470" />
+  <title>Cadastro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../public/css/style.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <div class="header">
+    <a href="./index.html" class="logo">
+      <img src="../public/images/logo.png" width="50%" alt="SGC logo" />
+    </a>
+    <div class="header-right">
+      <a href="./index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a class="active" href="./login.html"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h1>CADASTRO DE CURSO</h1>
+    <form action="#" class="form-criar-curso" id="criar" method="post">
+      <div class="curso-field ct-input">
+        <label for="curso">Curso</label>
+        <input type="text" name="Curso" id="curso" placeholder="Nome do Curso" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-times-circle"></i>
+        <span class="alert">Digite o nome do Curso a ser cadastrado</span>
+      </div>
+      <div class="ch-field ct-input">
+        <label for="email">Carga Horária</label>
+        <input type="text" name="ch" id="ch" placeholder="Carga Horária do Curso" />
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-times-circle"></i>
+        <span class="alert">Digite a carga horária do Curso a ser inserido</span>
+      </div>
+      <div class="categoria-field ct-input">
+        <label for="categorias">Categorias</label>
+        <i class="fas fa-check-circle"></i>
+        <i class="fas fa-times-circle"></i>
+        <select type="text" name="categoria" >
+          <option value="opcao1">1</option>
+          <option value="opcao2">2</option>
+          <option value="opcao3">3</option>
+        </select>
+        <span class="alert">Digite a(s) categoria(s) do Curso</span>
+      </div>
+      <button type="submit" class="submit" id="submit-curso">Cadastrar Curso</button>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-dark">
+    <footer>
+      <div class="container">
+        <a href="https://github.com/acauanrr" target="_blank">
+          <p class="copyright">DCC603 - UFRR © 2023</p>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

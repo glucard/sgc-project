@@ -1,0 +1,462 @@
+/* #3F558F, #01C1F0, #FC6284, #1C3470, #D5E7FD, #00ADE9*/
+
+* {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+  margin: 0;
+  font-family: "M PLUS 1", sans-serif;
+  color: #494f50;
+  font-size: 16px;
+  background: #f5f7f8;
+  --bg-login: #fff;
+  --bg-input: #f5f7f880;
+  --border: #dfdfdf;
+}
+
+/* ---------------------------- HEADER ----------------------------------- */
+.header {
+  display: flex;
+  width: 100%;
+  height: 110px;
+  /* overflow: hidden; */
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Style the header links */
+.header a {
+  /* float: left; */
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Change the background color on mouse-over */
+.header a {
+  padding: 10px;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active/current link*/
+.header a.active {
+  background-color: #00ade9;
+  color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+  display: flex;
+  gap: 20px;
+  padding: 10px 30px;
+  align-items: center;
+  height: 100%;
+}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+/* ---------------------------- CONTENT ----------------------------------- */
+button {
+  border: 0;
+  cursor: pointer;
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+}
+
+select{
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #ccc;
+}
+
+input {
+  font-size: inherit;
+  font-weight: inherit;
+  font-family: inherit;
+  border: 0;
+  outline: 0;
+}
+
+input::placeholder {
+  color: #aaaaaa;
+}
+
+h1 {
+  text-align: center;
+}
+
+.login {
+  max-width: 430px;
+  background: var(--bg-login);
+  margin: 0 auto;
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.05);
+}
+
+.btns-login {
+  display: flex;
+}
+
+.btns-login > * {
+  flex: 1;
+  padding: 15px;
+  transition: all 0.2s ease;
+}
+
+.btns-login button {
+  background: var(--bg-input);
+}
+
+.btns-login button:hover,
+button.ativo,
+.btns-login button.ativo:hover {
+  background: var(--bg-login);
+}
+
+.container {
+  padding: 30px;
+}
+
+.form-entrar,
+.form-criar-conta {
+  display: none;
+}
+
+form.ativo {
+  display: block;
+}
+
+.ct-input {
+  width: 100%;
+  position: relative;
+}
+
+.ct-input label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.ct-input + .ct-input {
+  margin-top: 40px;
+}
+
+.ct-input input {
+  width: 100%;
+  display: block;
+  background: var(--bg-input);
+  border-radius: 4px;
+  padding: 15px 10px;
+  border: 1px solid var(--border);
+}
+
+.ct-input i {
+  position: absolute;
+  top: 45px;
+  right: 10px;
+  display: none;
+}
+
+.ct-input.invalido i.fa-times-circle {
+  color: #ec3030;
+  display: block;
+}
+
+.ct-input.invalido input {
+  border: 2px solid #ec3030;
+}
+
+.ct-input.valido i.fa-check-circle {
+  color: rgb(77, 212, 72);
+  display: block;
+}
+
+.termos-field {
+  margin-top: 20px;
+}
+
+input:focus {
+  outline: 2px solid #0c813f;
+}
+
+.submit {
+  width: 100%;
+  padding: 15px 10px;
+  background: #00ade9;
+  color: white;
+  border-radius: 4px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.submit:hover {
+  background: #00ade9;
+}
+
+.forgot {
+  margin-top: 20px;
+  text-align: center;
+  display: block;
+  color: #0d6579;
+}
+
+.lembrar-label {
+  margin-top: 20px;
+  display: block;
+}
+
+.alert {
+  font-size: 0.875rem;
+  display: none;
+  margin-top: 5px;
+}
+
+/* -------------------------- New */
+.content {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  height: 100%;
+}
+
+/* -------------------------- CURSOS - Página Inicial */
+.container-cursos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding-left: 10em;
+  padding-right: 10em;
+  padding-bottom: 3em;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0.75rem;
+  /* background-color: white; */
+  width: 300px;
+  height: 370px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  background-clip: border-box;
+  /* background-color: rgb(33 150 243); */
+  box-shadow: 0 10px 15px -3px rgba(33, 150, 243, 0.4),
+    0 4px 6px -4px rgba(33, 150, 243, 0.4);
+  height: 35%;
+}
+
+.card-content {
+  /* background-color: green; */
+  border: none;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: small;
+  height: 50%;
+}
+
+.card-title {
+  color: rgb(38 50 56);
+  letter-spacing: 0;
+
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.card-footer {
+  padding: 0.75rem;
+  border: 1px solid rgb(236 239 241);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 140, 255, 0.082);
+  height: 15%;
+}
+
+.tag {
+  font-weight: 300;
+  font-size: 0.75rem;
+  display: block;
+}
+
+.action {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 6px -1px rgba(33, 150, 243, 0.4),
+    0 2px 4px -2px rgba(33, 150, 243, 0.4);
+  color: rgb(255 255 255);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(33 150 243);
+  border-radius: 0.5rem;
+}
+
+/* -------------------------- PÁGINA DO CURSO */
+.container-curso {
+  display: flex;
+  justify-content: center;
+  padding-left: 10em;
+  padding-right: 10em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  width: 100%;
+  height: 100%;
+  /* background-color: blueviolet; */
+}
+
+.card-curso {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 0.75rem;
+  width: 80%;
+  height: 100%;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-curso {
+  display: flex;
+  width: 35%;
+  height: 80%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-content-curso {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(235, 235, 235, 0.87);
+  width: 55%;
+  border: none;
+  border-radius: 1.3em;
+  border: 3px #1c3470 dashed;
+  padding: 5px 40px;
+  text-align: justify;
+}
+
+.card-title-curso {
+  color: rgb(38 50 56);
+  letter-spacing: 0;
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-align: center;
+}
+.card-content-curso-word {
+  font-weight: bold;
+}
+.card-content-curso-des {
+}
+
+.card-footer-curso {
+  padding: 0.75rem;
+  border: 1px solid rgb(236 239 241);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 140, 255, 0.082);
+  height: 15%;
+  width: 100%;
+  align-self: self-end;
+}
+
+.action-curso {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 6px -1px rgba(33, 150, 243, 0.4),
+    0 2px 4px -2px rgba(33, 150, 243, 0.4);
+  color: rgb(255 255 255);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 0.75rem 1.5rem;
+  background-color: rgb(33 150 243);
+  border-radius: 0.5rem;
+}
+
+/* ---------------------------- FOOTER ----------------------------------- */
+
+.footer-dark {
+  padding: 5px 0;
+  color: #f0f9ff;
+  background-color: #3f558f;
+}
+
+.footer-dark .copyright {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.footer-dark a:hover {
+  color: #ccc;
+}

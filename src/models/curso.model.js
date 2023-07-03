@@ -5,6 +5,14 @@ const Curso = (sequelize, DataTypes) => {
       },
       ch: {
         type: DataTypes.INTEGER,
+      },
+      
+      imagem: {
+        type: DataTypes.STRING,
+      },
+      
+      descricao: {
+        type: DataTypes.STRING,
       }
     },
     {

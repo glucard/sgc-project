@@ -2,6 +2,7 @@ import express from "express";
 import { body, validationResult } from "express-validator";
 import { cursoController } from "../controller/index.js";
 import AuthMiddleware from "../middlewares/AuthMiddleware.js";
+import AuthMiddlewarePage from "../middlewares/AuthMiddlewarePage.js";
 
 const router = express.Router();
 
@@ -31,6 +32,18 @@ router.get("/", AuthMiddleware, async (req, res) => {
 });
 
 
+router.get("/page/c/:curso_id", AuthMiddlewarePage, async (req, res) => {
+  const curso_id = req.params.curso_id;
+  const curso = await cursoController.getByID(curso_id)
+  const dataValues = curso.dataValues;
+  res.render("pagina-curso.hbs", {dataValues});
+});
+
+router.get("/page/create", AuthMiddlewarePage, async (req, res) => {
+  res.render("cadastro_curso.hbs");
+});
+
+
 router.post(
   "/",
   [
@@ -50,8 +63,8 @@ router.post(
     }
 
     //se os dados forem válidos, o sistema executará aqui
-    const { nome, ch, categoria_ids } = req.body;
-    await cursoController.adicionar({ nome, ch, categoria_ids });
+    const {id, nome, ch, categoria_ids, imagem, descricao} = req.body;
+    await cursoController.adicionar({id, nome, ch, categoria_ids, imagem, descricao});
     res.status(201).send("Curso criado com sucesso!");
   }
 );
@@ -61,6 +74,8 @@ router.patch(
   [
     //validação dos dados
     body("nome").notEmpty().trim().withMessage("O campo nome é obrigatório"),
+    body("imagem").notEmpty().trim().withMessage("O campo imagem é obrigatório"),
+    body("descricao").notEmpty().trim().withMessage("O campo descricao é obrigatório"),
     body("ch")
       .isNumeric()
       .isLength({ min: 2 })
@@ -75,8 +90,8 @@ router.patch(
     }
     const id = req.params.curso_id;
     //se os dados forem válidos, o sistema executará aqui
-    const { nome, ch, categoria_ids } = req.body;
-    await cursoController.update({id, nome, ch, categoria_ids });
+    const { nome, ch, categoria_ids, imagem, descricao } = req.body;
+    await cursoController.update({id, nome, ch, categoria_ids, imagem, descricao});
     res.status(201).send("Curso atualizado com sucesso!");
   }
 );

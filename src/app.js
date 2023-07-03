@@ -6,6 +6,7 @@ import cors from "cors";
 import path from "path";
 import fileDirName from './config/file-dir-name.js';
 import { engine } from 'express-handlebars'
+import cookieParser from "cookie-parser";
 
 const { __dirname, __filename } = fileDirName(import.meta);
 
@@ -16,6 +17,7 @@ const PORT = 3000;
 global.__basedir = __dirname;
 // Definindo static folder
 app.use("/", express.static(path.join(__dirname, "/public")));
+app.use(cookieParser());
 
 
 // Setup Template Engine

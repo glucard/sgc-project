@@ -1,10 +1,17 @@
     {{> header}}
     <!-- CONTENT -->
     <div class="container-curso" id="curso">
-      {{#if cursoJson}} 
-       
-         {{this}}
-     
+      {{#if dataValues}}
+        {{#dataValues}}
+          {{id}}
+          {{nome}}
+          {{imagem}}
+          {{descricao}}
+          {{ch}}
+          {{#each categoria_nomes}}
+            {{this}}
+          {{/each}}
+        {{/dataValues}}
       {{/if}}
       
       {{!-- {{#if curso}}
@@ -13,10 +20,6 @@
         {{/dataValues}}
       {{/if}} --}}
       
-    </div>
-
-
-   
     </div>
     {{> footer}}
    

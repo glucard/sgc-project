@@ -20,6 +20,8 @@ export default class CursoController {
       c.set({
         nome: nome,
         ch: ch,
+        descricao: descricao,
+        imagem: imagem,
       });
       c.save();
 
@@ -38,17 +40,21 @@ export default class CursoController {
   }
 
   async getByID(id) {
-    const c = this.curso.findOne({
+    const c = await this.curso.findOne({
       where: {
         id: id,
       },
       include: categoria,
     });
+    c.dataValues['categoria_nomes'] = c.dataValues.Categoria.map(x => x.dataValues.nome) 
     return c;
   }
 
   async getAll() {
     const cursos = await this.curso.findAll({include: categoria});
+    const mod_cursos = cursos.map(c => {
+      c.dataValues['categoria_nomes'] = c.dataValues.Categoria.map(x => x.dataValues.nome) 
+    })
     return cursos;
   }
 

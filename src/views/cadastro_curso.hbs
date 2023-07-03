@@ -1,0 +1,20 @@
+{{> header}}
+<!-- CONTENT -->
+<main>
+  <div class="curso">
+    <h3>Criar Curso</h3>
+    <a href="manage_courses.html">voltar</a>
+    <div>
+      <form name="criar_curso">
+      <label for="nome" > Nome do Curso:</label>
+      <input name="nome" type="text" id="nome" placeholder="Curso" required>
+      
+      <label for="ch" >Carga Horária:</label>
+      <input name="ch" type="text" id="ch" placeholder="Carga Horária" required>
+
+      <button id="submit_criar_curso" class="btn-criar" >Criar Curso</button>
+      </form>
+    </div>
+  </div>
+  <script src="js/manage-create-curso.js"></script>
+{{> footer}}

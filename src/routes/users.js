@@ -18,7 +18,7 @@ router.post("/create", async (req, res) => {
   if (resp.error) {
     return res.status(400).json(resp);
   }
-  es.status(200).json(resp);
+  res.status(200).json(resp);
 });
 
 router.post("/login", async (req, res) => {
@@ -31,6 +31,7 @@ router.post("/login", async (req, res) => {
   console.log(resp);
   res.cookie('user_name', resp.user.name);
   res.cookie('token', "Bearer "+resp.token);
+  res.cookie('role', resp.user.role);
   res.status(200).json(resp);
 });
 
@@ -41,6 +42,7 @@ router.get("/page/login", async (req, res) => {
 router.get("/page/logout", async (req, res) => {
   res.clearCookie("token");
   res.clearCookie("user_name");
+  res.clearCookie("role");
   res.redirect('back');
 });
 

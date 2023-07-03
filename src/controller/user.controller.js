@@ -23,9 +23,9 @@ export class UserController {
         message: "Usuário já existe",
       };
     }
-
+    const role = 3;
     const { name, email, password } = userData;
-    const userNew = { name, email, password };
+    const userNew = { name, email, password, role };
 
     // Criptografar a senha
     userNew.password = await bcrypt.hash(userNew.password, 8);
@@ -65,6 +65,7 @@ export class UserController {
       user: {
         name: userExist.name,
         email: userExist.email,
+        role: userExist.role,
       },
       token: jwt.sign({ id: userExist.id }, auth.secret, {
         expiresIn: auth.expireIn,

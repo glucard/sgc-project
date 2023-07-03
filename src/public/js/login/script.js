@@ -76,18 +76,38 @@ function validateInput(input, index) {
     }
 }
 
-
-async function create_account(name, email, password) {
-    const reponse = fetch()
-}
-
 inputsCriarConta.forEach((input, index) => 
     input.addEventListener('change', (event) =>
         validateInput(event.target, index)
     )
 )
 
+
+async function create_account(name, email, password){
+    const fetch_json = {
+        method: "POST",
+        body: JSON.stringify({
+            "name": name,
+            "email": email,
+            "password": password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+    };
+    console.log(fetch_json);
+    const response = await fetch(`http://localhost:3000/users/create`, fetch_json);
+    const reponse_json = await response.json()
+    if (reponse_json.name){
+        alert("Conta criada com sucesso");
+        window.location.replace("/users/page/login");
+    }else {
+        alert("Não foi possivel criar conta.")
+    }
+}
+
 function submitForm(event) {
+    event.preventDefault()  
 
     inputsCriarConta.forEach((input,index) => validateInput(input, index));
 
@@ -99,10 +119,18 @@ function submitForm(event) {
 
     console.log(arrayInputs)
     if (arrayInputs.some(isInvalid) || !termosInput.checked) {
-        event.preventDefault()
         console.log("invalid")
+    } else {
+
+        const criar_form = document.forms['criar-conta'];
+    
+        const name = criar_form['usuario'].value;
+        const email = criar_form['email'].value;
+        const password = criar_form['senha'].value;
+        
+        create_account(name, email, password);
+        
     }
-    console.log("valid")
 }
 
 submitBtn.addEventListener('click', submitForm)

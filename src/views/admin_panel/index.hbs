@@ -2,33 +2,31 @@
 <!-- CONTENT -->
 <main>
     <div class="content">
-        <h1>Lista de Cursos</h1>
-        <div id="cursos" class="container-cursos">
-            {{#each cursos as |cursos|}}
-                {{#dataValues}}
-                <div class="card">
-                    <div class="card-image">
-                        <img
-                            src="/images/cards/{{imagem}}"
-                            width="100%"
-                            alt="img curso"
-                        />
+        <div id="users-role-panel">
+            <p>nome e-mail permissão</p>
+            <form name="edit-role">
+                {{#each users_role}}
+                    <div>
+                        <p>{{name}} {{email}} {{role}} <a href="admin/page/edit_user/{{id}}">Edit</a></p>
+                    <!--
+                        <input name="name-edit-role" value="{{name}}">
+                        <input name="email-edit-role" value="{{email}}">
+                        <select name="role-edit-role">
+                            {{#each all_role as |all_role|}}
+                                <option
+                                    value="{{all_role}}"
+                                    {{#if (eq all_role role)}}
+                                        selected
+                                    {{/if}}
+                                >
+                                    {{all_role}}
+                                </option>
+                            {{/each}}
+                        </select>
+                    -->
                     </div>
-                    <div class="card-content">
-                        <h2 class="card-title">{{this.nome}}</h2>
-                        <p>{{descricao}}</p>
-                    </div>
-                    <div class="card-footer">
-                        {{#each categoria_nomes}}
-                            <p class="tag">{{this}}</p>
-                        {{/each}}
-                        <a href="/cursos/page/c/{{id}}">
-                            <button type="button" class="action">Inscrever-se</button>
-                        </a>
-                    </div>
-                </div>
-                {{/dataValues}}
-            {{/each}}
+                {{/each}}
+            </form>
         </div>
     </div>
 </main>

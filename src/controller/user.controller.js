@@ -11,6 +11,29 @@ export class UserController {
     const users = await this.user.findAll();
     return users;
   }
+  async getRoles() {
+    const users = await this.user.findAll();
+    const users_roles = users.map(u => {
+      const data = u.dataValues;
+      return {
+        id: data.id,
+        name: data.name,
+        email: data.email, 
+        role: data.role,
+      };
+    });
+
+    return users_roles;
+  }
+
+  async getByID(id) {
+    const user = await this.user.findOne({
+      where: {
+        id: id,
+      },
+    });
+    return user;
+  }
 
   async adicionar(userData) {
     let userExist = await this.user.findOne({

@@ -5,17 +5,13 @@ import { promisify } from "util";
 export default async (req, res, next) => {
   var authorization = req.headers.authorization;
 
-
   if (!authorization && req.cookies.token){
     console.log(req.cookies);
     authorization = req.cookies.token;
   }
 
   if (!authorization) {
-    return res.status(401).json({
-      error: true,
-      message: "O token de autorização não existe",
-    });
+    return res.redirect("/users/page/login");
   }
 
   const token = authorization.split(" ")[1];
@@ -23,20 +19,12 @@ export default async (req, res, next) => {
   try {
     const decoded = await promisify(jwt.verify)(token, auth.secret);
     if (!decoded) {
-      return res.status(401).json({
-        error: true,
-        code: 130,
-        message: "O token está expirado!",
-      });
+      return res.redirect("/users/page/login");;
     } else {
       req.user_id = decoded.id;
       next();
     }
   } catch {
-    return res.status(401).json({
-      error: true,
-      code: 130,
-      message: "O token está inválido!",
-    });
+    return res.redirect("/users/page/login");
   }
 };

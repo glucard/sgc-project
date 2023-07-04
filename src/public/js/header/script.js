@@ -22,6 +22,6 @@ if (token){
 
 const role = getCookie('role');
 if (role < 3) {
-    const new_html = `<a href="admin">AdminPanel</a>`;
+    const new_html = `<a href="/admin">AdminPanel</a>`;
     right_nav.innerHTML = right_nav.innerHTML + new_html;
 }

@@ -21,6 +21,14 @@ router.post("/create", async (req, res) => {
   res.status(200).json(resp);
 });
 
+router.patch("/:user_id", async (req, res) => {
+  const id = req.params.user_id;
+  const { name, email, role, number, endereco } = req.body;
+  const resp = await userController.update({ id, name, email, role, number, endereco });
+  
+  res.status(200).json(resp);
+});
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const resp = await userController.login({ email, password });
@@ -28,7 +36,6 @@ router.post("/login", async (req, res) => {
   if (resp.error) {
     return res.status(400).json(resp);
   }
-  console.log(resp);
   res.cookie('user_name', resp.user.name);
   res.cookie('token', "Bearer "+resp.token);
   res.cookie('role', resp.user.role);

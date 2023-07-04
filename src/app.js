@@ -6,6 +6,7 @@ import cors from "cors";
 import path from "path";
 import fileDirName from './config/file-dir-name.js';
 import { engine } from 'express-handlebars'
+import Handlebars from "handlebars";
 import cookieParser from "cookie-parser";
 
 const { __dirname, __filename } = fileDirName(import.meta);
@@ -26,6 +27,14 @@ app.engine("hbs", engine({
   defaultLayout: "main",
   partialsDir: path.join(__dirname, "views/partials"),
   layoutsDir: path.join(__dirname, "views/layouts"),
+  helpers: {
+    'eq': function () {
+      const args = Array.prototype.slice.call(arguments, 0, -1);
+      return args.every(function (expression) {
+          return args[0] === expression;
+      });
+    }
+  }
 }))
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));

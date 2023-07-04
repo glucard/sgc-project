@@ -3,6 +3,7 @@
     <div class="content">
         <div>
             <form name="form-edit-role" action="#" class="form-edit-role" method="post" id="edit-role">
+                 <input type="hidden" id="id-edit-role" name="id-edit-role" value="{{user_data.id}}">
                 <label for="name-edit-role">Nome: </label>
                 <input id="name-edit-role" type="text" name="name-edit-role" value="{{user_data.name}}">
                 <label for="email-edit-role">E-mail: </label>
@@ -12,7 +13,7 @@
                     {{#each all_role as |all_role|}}
                         <option
                             value="{{all_role}}"
-                            {{#if (all_role user_data.role)}}
+                            {{#if (eq all_role ../user_data.role)}}
                                 selected
                             {{/if}}
                         >

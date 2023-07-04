@@ -11,6 +11,7 @@ export class UserController {
     const users = await this.user.findAll();
     return users;
   }
+
   async getRoles() {
     const users = await this.user.findAll();
     const users_roles = users.map(u => {
@@ -33,6 +34,28 @@ export class UserController {
       },
     });
     return user;
+  }
+
+  async update(userDTO) {
+    const {id, name, email, role, number, endereco} = userDTO;
+
+    try {
+      const user = await this.user.findOne({
+        where: {
+          id: id
+        }
+      });
+      user.set({
+        name: name,
+        email: email,
+        role: role,
+        number: number,
+        endereco: endereco,
+      });
+      user.save();
+    } catch(error){
+      console.log(error);
+    }
   }
 
   async adicionar(userData) {

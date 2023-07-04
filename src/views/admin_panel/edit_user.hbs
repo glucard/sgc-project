@@ -1,0 +1,36 @@
+{{>header}}
+<main>
+    <div class="content">
+        <div>
+            <form name="form-edit-role" action="#" class="form-edit-role" method="post" id="edit-role">
+                <label for="name-edit-role">Nome: </label>
+                <input id="name-edit-role" type="text" name="name-edit-role" value="{{user_data.name}}">
+                <label for="email-edit-role">E-mail: </label>
+                <input id="email-edit-role" type="text" name="email-edit-role" value="{{user_data.email}}">
+                <label for="role-edit-role">Permissão: </label>
+                <select id="role-edit-role" name="role-edit-role">
+                    {{#each all_role as |all_role|}}
+                        <option
+                            value="{{all_role}}"
+                            {{#if (all_role user_data.role)}}
+                                selected
+                            {{/if}}
+                        >
+                            {{all_role}}
+                        </option>
+                    {{/each}}
+                </select>
+                <label for="number-edit-role">Telefone: </label>
+                <input id="number-edit-role" type="text" name="number-edit-role" value="{{user_data.number}}">
+                <label for="endereco-edit-role">Endereço: </label>
+                <input id="endereco-edit-role" type="text" name="endereco-edit-role" value="{{user_data.endereco}}">
+                
+                <button type="submit" class="submit" id="submit-edit-role">
+                    salvar
+                </button>
+            </form>
+        </div>
+    </div>
+    <script src="/js/admin_panel/edit-user.js"></script>
+</main>
+{{>footer}}

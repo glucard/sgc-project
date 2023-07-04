@@ -8,10 +8,8 @@ const role = getCookie('role');
 
 const users_role_panel = document.getElementById("users-role-panel");
 
-
 if (role){
     if (role == 1){
-        const new_html = 
         users_role_panel.innerHTML += `
 
         `

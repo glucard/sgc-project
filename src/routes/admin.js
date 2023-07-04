@@ -14,7 +14,7 @@ const userController = new UserController(user);
 router.get("/", AuthMiddlewarePage, async (req, res) => {
     var content = {};
     content['all_roles'] = [1,2,3];
-    if (req.user_role == 1) {
+    if (req.user_role < 2) {
         const users_role = await userController.getRoles()
         content['users_role'] = users_role;
     }

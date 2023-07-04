@@ -1,0 +1,46 @@
+{{>header}}
+<main>
+    <div class="content">
+        <div>
+            {{#curso_data}}
+            <form name="form-edit-curso" action="#" class="form-edit-curso" method="post" id="edit-curso">
+                <input type="hidden" id="id-edit-curso" name="id-edit-curso" value="{{id}}">
+
+                <label for="nome-edit-curso">Nome: </label>
+                <input id="nome-edit-curso" type="text" name="nome-edit-curso" value="{{nome}}">
+
+                <label for="ch-edit-curso">Carga horaria: </label>
+                <input id="ch-edit-curso" type="text" name="ch-edit-curso" value="{{ch}}">
+
+                <label for="imagem-edit-curso">Carga horaria: </label>
+                <input id="imagem-edit-curso" type="hidden" name="imagem-edit-curso" value="{{imagem}}">
+                
+                <label for="descricao-edit-curso">Descrição: </label>
+                <input id="descricao-edit-curso" type="text" name="descricao-edit-curso" value="{{descricao}}">
+                
+                <label for="categorias-edit-curso">Categorias: </label>
+                {{#each smp_categorias}}
+                    <select id="categoria-{{id}}-edit-curso" name="categoria-edit-curso">
+                        {{#each ../../categorias as |cat|}}
+                            <option value="{{cat.id}}" 
+                                {{#if (eq cat.id ../id)}}
+                                    selected
+                                {{/if}}
+                            >
+                                {{cat.nome}}
+                            </option>
+                        {{/each}}
+                    </select>
+                    <a href="/"></a>
+                {{/each}}
+
+                <button type="submit" class="submit" id="submit-edit-curso">
+                    salvar
+                </button>
+            </form>
+            {{/curso_data}}
+        </div>
+    </div>
+    <script src="/js/admin_panel/edit-curso.js"></script>
+</main>
+{{>footer}}

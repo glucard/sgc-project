@@ -1,6 +1,6 @@
 import express from "express";
 import { body, validationResult } from "express-validator";
-import { cursoController } from "../controller/index.js";
+import { categoriaController, cursoController } from "../controller/index.js";
 import { user } from "../models/index.js";
 import { UserController } from "../controller/user.controller.js";
 
@@ -13,12 +13,20 @@ const userController = new UserController(user);
 
 router.get("/", AuthMiddlewarePage, async (req, res) => {
     var content = {};
-    content['all_roles'] = [1,2,3];
+
     if (req.user_role < 2) {
         const users_role = await userController.getRoles()
         content['users_role'] = users_role;
     }
+    
+    if (req.user_role < 3) {
+        const cursos = await cursoController.getAll()
+        content['cursos'] = cursos;
+    }
+    const categorias = await categoriaController.getAll();
 
+    content['categorias'] = categorias;
+    
     res.render("admin_panel/index.hbs", content);
 });
 
@@ -34,6 +42,24 @@ router.get("/page/edit_user/:user_id", AuthMiddlewarePage, async (req, res) => {
     console.log(content)
 
     res.render("admin_panel/edit_user.hbs", content);
+});
+
+router.get("/page/edit_curso/:curso_id", AuthMiddlewarePage, async (req, res) => {
+    const curso_id = req.params.curso_id;
+
+    const curso = await cursoController.getByID2(curso_id)
+    const curso_data = curso.dataValues;
+
+    const categorias = await categoriaController.getAll();
+    
+    var content = {};
+    content['all_role'] = [2,3];
+    content['curso_data'] = curso_data;
+    content['categorias'] = categorias;
+    
+    console.log(content)
+
+    res.render("admin_panel/edit_curso.hbs", content);
 });
 
 export default router;

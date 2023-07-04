@@ -43,7 +43,6 @@ router.get("/page/create", AuthMiddlewarePage, async (req, res) => {
   res.render("cadastro_curso.hbs");
 });
 
-
 router.post(
   "/",
   [

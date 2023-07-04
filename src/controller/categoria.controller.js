@@ -4,8 +4,17 @@ export default class CategoriaController {
     }
 
     async getAll() {
-      const categoria = await this.categoria.findAll();
-      return categoria;
+      const categorias = await this.categoria.findAll();
+      const mod_c = categorias.map(c => {
+        const data = c.dataValues;
+        return {
+          id: data.id,
+          nome: data.nome,
+          descricao: data.descricao,
+        };
+
+      })
+      return mod_c;
     }
     
     async adicionar(categoriaDTO) {

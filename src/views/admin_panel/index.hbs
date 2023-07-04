@@ -3,32 +3,92 @@
 <main>
     <div class="content">
         <div id="users-role-panel">
-            <p>nome e-mail permissão</p>
-            <form name="edit-role">
+            <h1>Edit users</h1>
+            <table>
+                <tr>
+                    <th>nome</th>
+                    <th>e-mail</th>
+                    <th>permissão</th>
+                    <th></th>
+
+                </tr>
                 {{#each users_role}}
-                    <div>
-                        <p>{{name}} {{email}} {{role}} <a href="admin/page/edit_user/{{id}}">Edit</a></p>
-                    <!--
-                        <input name="name-edit-role" value="{{name}}">
-                        <input name="email-edit-role" value="{{email}}">
-                        <select name="role-edit-role">
-                            {{#each all_role as |all_role|}}
-                                <option
-                                    value="{{all_role}}"
-                                    {{#if (eq all_role role)}}
-                                        selected
-                                    {{/if}}
-                                >
-                                    {{all_role}}
-                                </option>
-                            {{/each}}
-                        </select>
-                    -->
-                    </div>
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{email}}</td>
+                        <td>{{role}}</td>
+                        <td><a href="/admin/page/edit_user/{{id}}">Edit</a></td>
+                    </tr>
                 {{/each}}
+            </table>
+        </div>
+        <div id="cursos-role-panel">
+            <h1>Edit Cursos</h1>
+            <table>
+                <tr>
+                    <th>nome</th>
+                    <th>ch</th>
+                    <th></th>
+                </tr>
+                {{#each cursos}}
+                    {{#dataValues}}
+                        <tr>
+                            <td>{{nome}}</td>
+                            <td>{{ch}}</td>
+                            <td><a href="/admin/page/edit_curso/{{id}}">Edit</a></td>
+                        </tr>
+                    {{/dataValues}}
+                {{/each}}
+            </table>
+        </div>
+        <div id="add-cursos-role-panel">
+            <h1>Add Cursos</h1>
+            <form name="form-create-curso" action="#" class="form-create-curso" method="post" id="create-curso">
+
+                <label for="nome-create-curso">Nome: </label>
+                <input id="nome-create-curso" type="text" name="nome-create-curso">
+
+                <label for="ch-create-curso">Carga horaria: </label>
+                <input id="ch-create-curso" type="text" name="ch-create-curso">
+
+                <label for="imagem-create-curso">Carga horaria: </label>
+                <input id="imagem-create-curso" type="hidden" name="imagem-create-curso" value="default.png">
+                
+                <label for="descricao-create-curso">Descrição: </label>
+                <input id="descricao-create-curso" type="text" name="descricao-create-curso">
+                
+                <label for="categorias-create-curso">Categorias: </label>
+                <select id="categoria-{{id}}-create-curso" name="categoria-create-curso">
+                    {{#each categorias}}
+                        <option value="{{id}}">
+                            {{nome}}
+                        </option>
+                    {{/each}}
+                </select>
+                <a href="/"></a>
+
+                <button type="submit" class="submit" id="submit-create-curso">
+                    salvar
+                </button>
+            </form>
+        </div>
+        <div id="add-categoria-role-panel">
+            <h1>Add Categoria</h1>
+            <form name="form-create-categoria" action="#" class="form-create-categoria" method="post" id="create-categoria">
+
+                <label for="nome-create-categoria">Nome: </label>
+                <input id="nome-create-categoria" type="text" name="nome-create-categoria">
+                
+                <label for="descricao-create-categoria">Descrição: </label>
+                <input id="descricao-create-categoria" type="text" name="descricao-create-categoria">
+
+                <button type="submit" class="submit" id="submit-create-categoria">
+                    salvar
+                </button>
             </form>
         </div>
     </div>
+    <script src="/js/admin_panel/index.js"></script>
 </main>
 {{> footer}}
 

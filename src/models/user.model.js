@@ -11,6 +11,18 @@ const user = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
       },
+      role: {
+        type: DataTypes.INTEGER,
+      },
+      number: {
+        type: DataTypes.STRING,
+      },
+      imagem_perfil: {
+        type: DataTypes.STRING,
+      },
+      endereco: {
+        type: DataTypes.STRING,
+      }
     },
     {
       tableName: "user",

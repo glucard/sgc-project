@@ -7,7 +7,7 @@
       <button class="btn-cadastro" type="button">Criar conta</button>
     </div>
     <div class="container">
-      <form action="#" class="form-entrar ativo" method="post" id="entrar">
+      <form name='login' action="#" class="form-entrar ativo" method="post" id="entrar">
         <div class="username-field ct-input">
           <label for="usuario-entrar">Usuário ou email</label>
           <input
@@ -33,12 +33,12 @@
           Lembrar-me
         </label>
 
-        <button type="submit" class="submit">Entrar</button>
+        <button type="submit" class="submit" id="submit-entrar">Entrar</button>
 
         <a href="/" class="forgot">Esqueci meu nome de usuário ou senha</a>
       </form>
 
-      <form action="#" class="form-criar-conta" id="criar" method="post">
+      <form name='criar-conta' action="#" class="form-criar-conta" id="criar" method="post">
         <div class="username-field ct-input">
           <label for="usuario">Usuário</label>
           <input
@@ -102,4 +102,5 @@
       </form>
     </div>
   </section>
-  {{> footer}}
+<script src="/js/login/script.js"></script>
+{{> footer}}

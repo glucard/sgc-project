@@ -1,10 +1,23 @@
-    {{> header}}
+{{> header}}
     <!-- CONTENT -->
     <div class="container-curso" id="curso">
-      {{#if cursoJson}} 
-       
-         {{this}}
-     
+      {{#if dataValues}}
+      {{#dataValues}}
+      <div class="card-curso">
+        <img class="card-image-curso" src="/images/cards/{{imagem}}">
+        <div class="card-content-curso ">
+          
+          <div class="card-title-curso">
+            {{nome}}
+          </div>
+            <p><b>Descrição:</b>      {{descricao}}</p>
+            <p><b>Carga Horária:</b>     {{ch}} </p> 
+            {{#each categoria_nomes}}
+              <p><b>TAGs:</b>     {{this}} </p> 
+            {{/each}}
+            {{/dataValues}}
+        </div>
+      </div> 
       {{/if}}
       
       {{!-- {{#if curso}}
@@ -14,10 +27,4 @@
       {{/if}} --}}
       
     </div>
-
-
-   
-    </div>
     {{> footer}}
-   
-

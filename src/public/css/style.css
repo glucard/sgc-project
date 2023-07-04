@@ -46,7 +46,7 @@ body {
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
-  font-size: 25px;
+  font-size: 35px;
   font-weight: bold;
 }
 
@@ -357,7 +357,7 @@ input:focus {
   padding-bottom: 1em;
   width: 100%;
   height: 100%;
-  /* background-color: blueviolet; */
+  / background-color: blueviolet; */
 }
 
 .card-curso {
@@ -374,8 +374,8 @@ input:focus {
 
 .card-image-curso {
   display: flex;
-  width: 35%;
-  height: 80%;
+  width: 40%;
+  height: 75%;
   justify-content: center;
   align-items: center;
 }
@@ -404,6 +404,7 @@ input:focus {
   font-weight: bold;
 }
 .card-content-curso-des {
+
 }
 
 .card-footer-curso {

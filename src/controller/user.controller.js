@@ -12,6 +12,52 @@ export class UserController {
     return users;
   }
 
+  async getRoles() {
+    const users = await this.user.findAll();
+    const users_roles = users.map(u => {
+      const data = u.dataValues;
+      return {
+        id: data.id,
+        name: data.name,
+        email: data.email, 
+        role: data.role,
+      };
+    });
+
+    return users_roles;
+  }
+
+  async getByID(id) {
+    const user = await this.user.findOne({
+      where: {
+        id: id,
+      },
+    });
+    return user;
+  }
+
+  async update(userDTO) {
+    const {id, name, email, role, number, endereco} = userDTO;
+
+    try {
+      const user = await this.user.findOne({
+        where: {
+          id: id
+        }
+      });
+      user.set({
+        name: name,
+        email: email,
+        role: role,
+        number: number,
+        endereco: endereco,
+      });
+      user.save();
+    } catch(error){
+      console.log(error);
+    }
+  }
+
   async adicionar(userData) {
     let userExist = await this.user.findOne({
       where: { email: userData.email },
@@ -23,9 +69,9 @@ export class UserController {
         message: "Usuário já existe",
       };
     }
-
+    const role = 3;
     const { name, email, password } = userData;
-    const userNew = { name, email, password };
+    const userNew = { name, email, password, role };
 
     // Criptografar a senha
     userNew.password = await bcrypt.hash(userNew.password, 8);
@@ -65,6 +111,7 @@ export class UserController {
       user: {
         name: userExist.name,
         email: userExist.email,
+        role: userExist.role,
       },
       token: jwt.sign({ id: userExist.id }, auth.secret, {
         expiresIn: auth.expireIn,

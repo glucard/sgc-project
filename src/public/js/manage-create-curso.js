@@ -19,7 +19,7 @@ async function create_curso(name, ch){
           "authorization": `Bearer ${access_token}`,
         }
     };
-    const response = await fetch(`http://localhost:3000/cursos`, fetch_json);
+    const response = await fetch(`http://0.0.0.0:3000/cursos`, fetch_json);
     console.log(response)
     if (response.status == 201){
         alert("Criado com sucesso");

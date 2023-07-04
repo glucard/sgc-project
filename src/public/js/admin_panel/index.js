@@ -22,7 +22,7 @@ async function add_curso(nome, imagem, ch, descricao, categories_ids){
       }
   };
   console.log(fetch_json.body);
-  const response = await fetch(`http://localhost:3000/cursos/`, fetch_json);
+  const response = await fetch(`http://0.0.0.0:3000/cursos/`, fetch_json);
   console.log(token_r)
   alert("Criado com sucesso");
   location.reload()
@@ -69,7 +69,7 @@ async function add_categoria(nome, descricao){
       }
   };
   console.log(fetch_json.body);
-  const response = await fetch(`http://localhost:3000/categoria/create`, fetch_json);
+  const response = await fetch(`http://0.0.0.0:3000/categoria/create`, fetch_json);
   console.log(token_r)
   alert("Criado com sucesso");
   location.reload()

@@ -20,7 +20,7 @@ async function edit_role(id, name, email, role, number, endereco){
         }
     };
     console.log(fetch_json);
-    const response = await fetch(`http://localhost:3000/users/${id}`, fetch_json);
+    const response = await fetch(`http://0.0.0.0:3000/users/${id}`, fetch_json);
     console.log(response)
     alert("Editado com sucesso");
     location.reload()

@@ -96,7 +96,7 @@ async function create_account(name, email, password){
         }
     };
     console.log(fetch_json);
-    const response = await fetch(`http://localhost:3000/users/create`, fetch_json);
+    const response = await fetch(`http://0.0.0.0:3000/users/create`, fetch_json);
     const reponse_json = await response.json()
     if (reponse_json.name){
         alert("Conta criada com sucesso");
@@ -159,7 +159,7 @@ async function login(email, password){
         }
     };
     console.log(fetch_json);
-    const response = await fetch(`http://localhost:3000/users/login`, fetch_json);
+    const response = await fetch(`http://0.0.0.0:3000/users/login`, fetch_json);
     const reponse_json = await response.json()
     if (reponse_json.token){
         alert("logado com sucesso");

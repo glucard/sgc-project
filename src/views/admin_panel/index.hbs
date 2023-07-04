@@ -1,6 +1,70 @@
 {{> header}}
 <!-- CONTENT -->
 <main>
+    <style>
+        /* Estilos CSS personalizados */
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th {
+            background-color: #f5f5f5;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button.submit {
+            background-color: #00ade9;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
     <div class="content">
         <div id="users-role-panel">
             <h1>Edit users</h1>
@@ -10,15 +74,14 @@
                     <th>e-mail</th>
                     <th>permissão</th>
                     <th></th>
-
                 </tr>
                 {{#each users_role}}
-                    <tr>
-                        <td>{{name}}</td>
-                        <td>{{email}}</td>
-                        <td>{{role}}</td>
-                        <td><a href="/admin/page/edit_user/{{id}}">Edit</a></td>
-                    </tr>
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{role}}</td>
+                    <td><a href="/admin/page/edit_user/{{id}}">Edit</a></td>
+                </tr>
                 {{/each}}
             </table>
         </div>
@@ -31,13 +94,13 @@
                     <th></th>
                 </tr>
                 {{#each cursos}}
-                    {{#dataValues}}
-                        <tr>
-                            <td>{{nome}}</td>
-                            <td>{{ch}}</td>
-                            <td><a href="/admin/page/edit_curso/{{id}}">Edit</a></td>
-                        </tr>
-                    {{/dataValues}}
+                {{#dataValues}}
+                <tr>
+                    <td>{{nome}}</td>
+                    <td>{{ch}}</td>
+                    <td><a href="/admin/page/edit_curso/{{id}}">Edit</a></td>
+                </tr>
+                {{/dataValues}}
                 {{/each}}
             </table>
         </div>
@@ -51,18 +114,18 @@
                 <label for="ch-create-curso">Carga horaria: </label>
                 <input id="ch-create-curso" type="text" name="ch-create-curso">
 
-                <label for="imagem-create-curso">Carga horaria: </label>
-                <input id="imagem-create-curso" type="hidden" name="imagem-create-curso" value="default.png">
                 
+                <input id="imagem-create-curso" type="hidden" name="imagem-create-curso" value="default.png">
+
                 <label for="descricao-create-curso">Descrição: </label>
                 <input id="descricao-create-curso" type="text" name="descricao-create-curso">
-                
+
                 <label for="categorias-create-curso">Categorias: </label>
                 <select id="categoria-{{id}}-create-curso" name="categoria-create-curso">
                     {{#each categorias}}
-                        <option value="{{id}}">
-                            {{nome}}
-                        </option>
+                    <option value="{{id}}">
+                        {{nome}}
+                    </option>
                     {{/each}}
                 </select>
                 <a href="/"></a>
@@ -74,11 +137,12 @@
         </div>
         <div id="add-categoria-role-panel">
             <h1>Add Categoria</h1>
-            <form name="form-create-categoria" action="#" class="form-create-categoria" method="post" id="create-categoria">
+            <form name="form-create-categoria" action="#" class="form-create-categoria" method="post"
+                id="create-categoria">
 
                 <label for="nome-create-categoria">Nome: </label>
                 <input id="nome-create-categoria" type="text" name="nome-create-categoria">
-                
+
                 <label for="descricao-create-categoria">Descrição: </label>
                 <input id="descricao-create-categoria" type="text" name="descricao-create-categoria">
 
@@ -91,4 +155,3 @@
     <script src="/js/admin_panel/index.js"></script>
 </main>
 {{> footer}}
-

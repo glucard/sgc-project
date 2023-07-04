@@ -20,7 +20,7 @@ async function edit_curso(id, nome, imagem, ch, descricao, categories_ids){
         }
     };
     console.log(fetch_json.body);
-    const response = await fetch(`http://localhost:3000/cursos/${id}`, fetch_json);
+    const response = await fetch(`http://0.0.0.0:3000/cursos/${id}`, fetch_json);
     console.log(token_r)
     alert("Editado com sucesso");
     location.reload()
